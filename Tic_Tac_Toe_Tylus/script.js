@@ -1,6 +1,7 @@
 const boxes = document.querySelectorAll('.box')
 const resetButton = document.querySelector('#reset')
 let board = ['','','','','','','','']
+let board2 = [0,0,0,0,0,0,0,0,0]
 let turns = 0
 const playerX = "X"
 let xArray = []
@@ -22,6 +23,9 @@ let oArray = []
 //     console.log("The number is odd.");
 // }
 
+// have board2 with 9 positions, list player as 1 or 2 in each position in the index based on their chosen position
+
+// have each box effect position of array based on index b1 effects board[1]
 
 
 // let userAction = ()=>{
@@ -36,43 +40,47 @@ let oArray = []
 // }
 
 const winningConditions = [
+    // horizontal win conditions
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
+    // vertical win conditions
     [0, 3, 6],
     [1, 4, 7],
     [2, 5, 8],
+    // diagonal win conditions 
     [0, 4, 8],
     [2, 4, 6]
-    ]; 
+];
 
-let win = "something"
-findBox = (box) =>{
+// if(turns % 2 == 0){
+//     board2[box].push="x"
+// }
+// else{
+//     board2[box].push="o"
+//     }
+// }
+
+const findBox = (box) =>{
     if(turns % 2 == 0){
-        xArray.push(box)
-        console.log(xArray)
+        board2[box] ="x"
+        console.log(board2)
     }
     else{
-        oArray.push(box)
-        console.log(oArray)
+        board2[box] ="o"
+        console.log(board2)
     }
 }
-
 
 for(let i = 0; i<boxes.length; i++){
     boxes[i].addEventListener('click', function(){
         if(turns % 2 == 0){
             boxes[i].innerText=playerX
             turns++;
-            findBox()
         }
         else if(turns % 2 == 1){
             boxes[i].innerText=playerO
             turns++;
-            findBox()
         }
     })
 }
-
-//Win Validation
-// Something Something, if
